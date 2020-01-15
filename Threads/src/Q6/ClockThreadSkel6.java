@@ -43,9 +43,9 @@ public class ClockThreadSkel6 implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object target = e.getSource();
 		if (target == stop24)
-			clockThread24.suspend();
+			clockThread24.mySuspend();
 		if (target == restart24)
-			clockThread24.resume();
+			clockThread24.myResume();
 	}
 
 	public static void main(String[] args) {
@@ -56,9 +56,19 @@ public class ClockThreadSkel6 implements ActionListener {
 class Display24 extends Thread {
 
 	private JLabel l24;
+	private boolean suspendFlag = false;
 
 	public Display24(JLabel l1) {
 		l24 = l1;
+	}
+
+	public void mySuspend() {
+		suspendFlag = true;
+	}
+
+	public synchronized void myResume() {
+		suspendFlag = false;
+		notify();
 	}
 
 	public void updatedisplay() {
@@ -75,6 +85,11 @@ class Display24 extends Thread {
 			updatedisplay();
 			try {
 				Thread.sleep(1000);
+				synchronized (this) {
+					while (suspendFlag) {
+						wait();
+					}
+				}
 			} catch (InterruptedException e) {
 			}
 		}
