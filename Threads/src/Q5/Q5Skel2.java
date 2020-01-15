@@ -39,13 +39,14 @@ class Counter1 extends Thread implements ActionListener {
 		notify();
 	}
 
+	
 	public void actionPerformed(ActionEvent e) {
 		Object target = e.getSource();
 		if (target == b1) {
-			this.suspend();
+			mySuspend();
 		}
 		if (target == b2) {
-			this.resume();
+			myResume();
 		}
 	}
 
