@@ -17,6 +17,7 @@ class ThreadUnsafe extends Thread {
 			}
 			System.out.println(val1 / val2);
 			val2 = 0;
+			
 		} else {
 			System.out.println("Val2=0");
 		}
