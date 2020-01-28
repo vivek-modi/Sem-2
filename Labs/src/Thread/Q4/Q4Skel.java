@@ -1,4 +1,4 @@
-package Q4;
+package Thread.Q4;
 
 import java.awt.*;
 

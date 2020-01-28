@@ -1,10 +1,10 @@
-package Q5;
+package Thread.Q5;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-class Counter extends Thread implements ActionListener {
+class Counter1 extends Thread implements ActionListener {
 	private int counter;
 	private JFrame f1 = new JFrame();
 	private JLabel l = new JLabel();
@@ -12,8 +12,9 @@ class Counter extends Thread implements ActionListener {
 	Container content;
 	private JButton b1 = new JButton("Suspend");
 	private JButton b2 = new JButton("Resume");
+	private boolean suspendFlag = false;
 
-	Counter() {
+	Counter1() {
 		counter = 0;
 		content = f1.getContentPane();
 		l.setFont(fnt);
@@ -29,13 +30,23 @@ class Counter extends Thread implements ActionListener {
 		b2.addActionListener(this);
 	}
 
+	public void mySuspend() {
+		suspendFlag = true;
+	}
+
+	public synchronized void myResume() {
+		suspendFlag = false;
+		notify();
+	}
+
+	
 	public void actionPerformed(ActionEvent e) {
 		Object target = e.getSource();
 		if (target == b1) {
-			this.suspend();
+			mySuspend();
 		}
 		if (target == b2) {
-			this.resume();
+			myResume();
 		}
 	}
 
@@ -46,14 +57,20 @@ class Counter extends Thread implements ActionListener {
 			l.setText("Counter:    " + counter);
 			try {
 				Thread.sleep(1000);
+				synchronized (this) {
+					while (suspendFlag) {
+						wait();
+					}
+				}
+
 			} catch (Exception e) {
 			}
 		}
 	}
 }
 
-public class Q5Skel {
+public class Q5Skel2 {
 	public static void main(String[] args) {
-		new Counter().start();
+		new Counter1().start();
 	}
 }

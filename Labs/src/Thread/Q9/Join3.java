@@ -1,4 +1,4 @@
-package Q9;
+package Thread.Q9;
 
 class Join3 extends Thread {
 	static int counter = 0;

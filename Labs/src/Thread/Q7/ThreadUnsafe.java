@@ -1,4 +1,4 @@
-package Q7;
+package Thread.Q7;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

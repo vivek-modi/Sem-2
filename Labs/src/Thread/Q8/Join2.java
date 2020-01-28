@@ -1,4 +1,4 @@
-package Q8;
+package Thread.Q8;
 
 import java.awt.Graphics;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Join1 {
+public class Join2 {
 	public static void main(String[] args) {
 		Thread t = new Thread() {
 			public void run() {
@@ -24,11 +24,7 @@ public class Join1 {
 			Thread.sleep(2000);
 		} catch (Exception e) {
 		}
-		try {
-			//t.join();
-		} catch (Exception e1) {
-		}
-		System.out.println("Join");
+		System.out.println("No Join");
 		System.out.println("Main Finished.");
 	}
 }

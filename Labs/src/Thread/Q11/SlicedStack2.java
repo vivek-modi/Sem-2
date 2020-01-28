@@ -1,4 +1,4 @@
-package Q11;
+package Thread.Q11;
 
 import java.awt.Graphics;
 import java.util.Date;

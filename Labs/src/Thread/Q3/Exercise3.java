@@ -1,4 +1,4 @@
-package Q3;
+package Thread.Q3;
 
 import java.util.concurrent.*;
 

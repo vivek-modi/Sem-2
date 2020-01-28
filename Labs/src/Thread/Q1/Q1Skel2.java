@@ -1,4 +1,4 @@
-package Q1;
+package Thread.Q1;
 
 class Display1 implements Runnable {
 	public String name;

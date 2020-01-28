@@ -1,4 +1,4 @@
-package Thread_Karls;
+package Thread.Thread_Karls;
 
 import java.awt.*;
 import java.awt.event.*;

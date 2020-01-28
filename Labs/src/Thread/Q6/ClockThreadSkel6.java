@@ -1,4 +1,4 @@
-package Q6;
+package Thread.Q6;
 
 import java.awt.Graphics;
 import java.text.SimpleDateFormat;
