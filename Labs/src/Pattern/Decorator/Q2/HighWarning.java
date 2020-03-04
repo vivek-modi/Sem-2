@@ -1,8 +1,8 @@
-package Pattern.Decorator.Q1;
+package Pattern.Decorator.Q2;
 
-public class Limit10Counter extends Decorator {
+public class HighWarning extends Decorator {
 
-	public Limit10Counter(Counter cc) {
+	public HighWarning(Counter cc) {
 		super(cc);
 	}
 
@@ -15,8 +15,8 @@ public class Limit10Counter extends Decorator {
 	}
 
 	public void increment() {
-		if (counter.readValue() == 10)
-			System.out.println("Already 10");
+		if (counter.readValue() >= 8)
+			System.out.println("WARNING GETTING HIGH");
 		else
 			counter.increment();
 	}
